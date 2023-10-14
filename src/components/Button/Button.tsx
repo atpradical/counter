@@ -1,8 +1,9 @@
 import React, {ReactNode} from 'react';
+import s from './Button.module.css'
 
 type PropsType = {
     onClick: () => void
-    disabled: boolean
+    disabled?: boolean
     children?: ReactNode
 }
 
@@ -14,6 +15,10 @@ export const Button: React.FC<PropsType> = (props) => {
     }
 
     return (
-        <button onClick={onClickHandler} disabled={disabled}>{children}</button>
+        <button
+            className={s.button}
+            onClick={onClickHandler}
+            disabled={disabled}
+        >{children}</button>
     );
 };

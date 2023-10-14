@@ -1,52 +1,30 @@
 .counter {
-    width: fit-content;
-    padding: 10px 15px;
-    margin: 20px auto;
-    font-family: monospace, sans-serif;
-    color: green;
-    font-size: 5rem;
-    box-shadow: 3px 3px rgba(205, 208, 203, 0.61), 1px 0 .4em rgba(96, 98, 96, 0.7);
+    margin: 10px;
+    padding: 15px;
+    max-width: 250px;
+    min-width: 250px;
+    background-color: snow;
     border: 2px solid #6f942e;
     border-radius: 10px;
+    color: green;
     display: flex;
     flex-direction: column;
-
+    align-items: center;
 }
 
-
-.limit {
-    color: darkred;
-}
-
-span {
+.span {
     display: inline-block;
-    margin-top: 10px;
+    width: 250px;
+    height: 85px;
+    color: snow;
+    line-height: 80px;
+    text-align: center;
+    font-size: 3rem;
     background-color: #6f942e;
     border-radius: 10px;
-    color: snow;
-    opacity: .7;
 }
 
-button {
-    margin: 0 10px;
-    padding: 5px 15px;
-    font-size: 1.8rem;
-    border: 2px solid #6f942e;
-    border-radius: 5px;
-    color: #6f942e;
-}
-
-button:active{
-    background-color: #acb98d;
-    color: snow;
-}
-
-button:disabled {
+.span.limit {
     color: darkred;
-    border-color: #c1c5c1;
-    background-color: #c1c5c1;;
-}
-
-button:hover {
-    cursor: pointer;
+    font-size: 1.5rem;
 }
