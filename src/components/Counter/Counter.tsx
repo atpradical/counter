@@ -1,41 +1,47 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Button} from "../Button/Button";
 import s from './Counter.module.css'
 
 type PropsType = {
     max: number
     start: number
+    count: number
     error: boolean
+    message: string
+    setCount: (value: number)=> void
 }
 
 export const Counter: React.FC<PropsType> = (props) => {
-    const {max, start, error} = props
-    const [counter, setCounter] = useState(start)
+    const {max, count, start, error, message, setCount} = props
 
     const increaseCounter = () => {
-        if (counter < max) {
-            const value = counter + 1
-            setCounter(value)
+        if (count < max) {
+            const value = count + 1
+            setCount(value)
         }
     }
 
     const resetCounter = () => {
-        setCounter(start)
+        setCount(0)
     }
 
     return (
         <div className={s.counter}>
             <span
-                className={error || counter === max
+                className={error || count === max
                     ? `${s.span} ${s.limit}`
                     : `${s.span}`}>
-                {error
-                    ? 'Incorrect value!'
-                    : counter
-                }</span>
+                {message || count}</span>
             <div>
-                <Button onClick={increaseCounter} disabled={error || counter === max}>inc</Button>
-                <Button onClick={resetCounter} disabled={error || counter === start}>reset</Button>
+                <Button
+                    onClick={increaseCounter}
+                    disabled={error || count === max}
+                >inc</Button>
+
+                <Button
+                    onClick={resetCounter}
+                    disabled={error || count === start}
+                >reset</Button>
             </div>
         </div>
     );

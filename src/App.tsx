@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import {Counter} from "./components/Counter/Counter";
 import {Settings} from "./components/Settings/Settings";
@@ -7,14 +7,13 @@ function App() {
 
     const [max, setMax] = useState<number>(5)
     const [start, setStart] = useState<number>(0)
-    const [newMax, setNewMax] = useState<number>(max)
-    const [newStart, setNewStart] = useState<number>(start)
+    const [count, setCount] = useState(0)
 
-    const applySettings = (newMax: number, newStart: number) => {
-        setMax(newMax)
-        setStart(newStart)
-        console.log(`Max and Start states updaed`)
-        console.log(`Max is ${max} and Start is ${start}`)
+    const [message, setMessage] = useState('')
+
+    const applySettings = () => {
+        setCount(start)
+        setMessage('')
     }
 
     const isError = (max:number, start:number): boolean => {
@@ -26,21 +25,33 @@ function App() {
 
     let error = isError(max, start)
 
+    useEffect(() => {
+        if (error) {
+            setMessage('incorrect value!')
+        } else {
+            setMessage('enter values and press set')
+        }
+    }, [error])
+
+
     return (
         <div className="App">
             <Settings
-                getMax={setNewMax}
-                getStart={setNewStart}
+                getMax={setMax}
+                getStart={setStart}
                 applySettings={applySettings}
-                newMax={newMax}
-                newStart={newStart}
+                newMax={max}
+                newStart={start}
                 error={error}
             />
 
             <Counter
                 max={max}
+                count={count}
                 start={start}
+                setCount={setCount}
                 error={error}
+                message={message}
             />
         </div>
     );

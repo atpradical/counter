@@ -6,7 +6,7 @@ import {Input} from "../Input/Input";
 type PropsType = {
     getMax: (value: number) => void
     getStart: (value: number) => void
-    applySettings: (newMax: number, newStart: number) => void
+    applySettings: () => void
     newMax: number
     newStart: number
     error: boolean
@@ -15,10 +15,6 @@ type PropsType = {
 export const Settings: React.FC<PropsType> = (props) => {
 
     const {getMax, getStart, applySettings, newMax, newStart, error} = props
-
-    const OnClickHandler = () => {
-        applySettings(newMax, newStart)
-    }
 
     return (
         <div className={s.settings}>
@@ -33,9 +29,9 @@ export const Settings: React.FC<PropsType> = (props) => {
                 onChange={getStart}
                 value={newStart}
                 error={error}
-            />
+             />
             <>
-                <Button onClick={OnClickHandler}>set</Button>
+                <Button onClick={applySettings} disabled={error}>set</Button>
             </>
         </div>
     );

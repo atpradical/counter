@@ -8,7 +8,7 @@ type PropsType = {
 }
 
 export const Button: React.FC<PropsType> = (props) => {
-    const {onClick, disabled, children, ...restProps} = props
+    const {onClick, disabled, children} = props
 
     const onClickHandler = () => {
         onClick()

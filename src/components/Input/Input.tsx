@@ -18,12 +18,18 @@ export const Input: React.FC<PropsType> = (props) => {
         setInputValue(Number(event.currentTarget.value))
     }
 
-
     return (
         <div>
-            <span className={error ? `${s.error} ${s.span}` : `${s.span}`}>{name}</span>
+            <span
+                className={error
+                    ? `${s.error} ${s.span}`
+                    : `${s.span}`}
+            >{name}</span>
+
             <input
-                className={error ? `${s.error} ${s.field}` : `${s.field}`}
+                className={error
+                    ? `${s.error} ${s.field}`
+                    : `${s.field}`}
                 type={'number'}
                 onChange={onChangeHandler}
                 value={inputValue}
